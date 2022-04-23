@@ -48,7 +48,7 @@ servers=[
 	:install_ansible => "./artefacts/scripts/install_ansible.sh", 
 	:config_ansible => "./artefacts/scripts/config_ansible.sh",
 	:source =>  "./artefacts/.",
-	:destination => "/home/vagrant/"
+	:destination => "/home/vagrant/artefacts"
   }
 ]
  

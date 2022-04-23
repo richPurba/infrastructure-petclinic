@@ -1,0 +1,11 @@
+---
+- name: Install Jenkins
+  hosts: jenkins
+  gather_facts: false
+  become: true
+ 
+  tasks:
+  - name: Upgrade
+    shelt: apt-get update -y && apt-get upgrade -y
+
+ 

@@ -1,0 +1,14 @@
+---
+- name: Copy docker compose
+  hosts: nfs-server
+  become: true
+
+
+  tasks:
+    - name: copy docker compose
+      copy:
+        src: '/home/vagrant/artefacts/scripts/docker/'
+        dest: '/home/vagrant'
+        owner: root
+        mode: '0640'
+        directory_mode:

@@ -63,11 +63,16 @@ chmod +x ~/artefacts/scripts/ssh_pass.sh
 ~/artefacts/scripts/ssh_pass.sh $USER $PASSWORD "jenkins.sample.com"
 ~/artefacts/scripts/ssh_pass.sh $USER $PASSWORD "gitlab.sample.com"
 
+
+
 ansible-playbook ~/artefacts/playbooks/nfs_server.yaml
+ansible-playbook ~/artefacts/playbooks/copy_docker_compose.yaml
+ansible-playbook ~/artefacts/playbooks/server_deployimage.yaml
 ansible-playbook ~/artefacts/playbooks/nfs_clients.yaml
 ansible-playbook ~/artefacts/playbooks/install_java.yaml
-ansible-playbook ~/artefacts/playbooks/install_jenkins.yaml
-ansible-playbook ~/artefacts/playbooks/install_docker.yaml
-ansible-playbook ~/artefacts/playbooks/install_gitlab.yaml
+ansible-playbook ~/artefacts/playbooks/prep_jenkins.yaml
+# ansible-playbook ~/artefacts/playbooks/install_jenkins.yaml # use script instead!
+# ansible-playbook ~/artefacts/playbooks/install_docker.yaml
+# ansible-playbook ~/artefacts/playbooks/install_gitlab.yaml
 
 

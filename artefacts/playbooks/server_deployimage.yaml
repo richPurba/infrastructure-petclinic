@@ -1,0 +1,14 @@
+---
+- name: Installing NFS Server 
+  hosts: nfs-server
+  become: true
+     
+  tasks:
+    - name: pull latest image
+      command: > 
+        sh -c 'cd /home/vagrant/artefacts/scripts/docker/; docker-compose pull'
+        
+    - name: restart cotainers
+      command: >
+        sh -c 'cd /home/vagrant/artefacts/scripts/docker/; docker-compose restart'
+        

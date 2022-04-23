@@ -1,5 +1,5 @@
-vagrant_box: ubuntu/trusty64
-vagrant_box_version: "20180404.0.0"
+vagrant_box: "generic/ubuntu2004"
+vagrant_box_version: "3.1.16"
 vagrant_ip: 192.168.99.
 vagrant_hostname: vagrant
 vagrant_memory: 4096

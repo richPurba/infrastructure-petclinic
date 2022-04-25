@@ -6,6 +6,6 @@
  
   tasks:
   - name: Upgrade
-    shelt: apt-get update -y && apt-get upgrade -y
+    shell: apt-get update -y && apt-get upgrade -y
 
  

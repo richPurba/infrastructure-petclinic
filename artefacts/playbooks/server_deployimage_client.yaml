@@ -1,6 +1,6 @@
 ---
 - name: Installing NFS Server 
-  hosts: added
+  hosts: other
   become: true
      
   tasks:

@@ -1,6 +1,6 @@
 ---
 - name: Copy docker compose
-  hosts: added
+  hosts: other
   become: true
 
 

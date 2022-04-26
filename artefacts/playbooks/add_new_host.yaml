@@ -1,0 +1,5 @@
+---
+- name: Add host to group 'all' with variable 
+  add_host:
+    name: 'other'
+    groups: all

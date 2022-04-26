@@ -1,5 +1,16 @@
 #!/bin/sh
 
+
+# Add vagrant user to sudoers.
+echo "vagrant        ALL=(ALL)       NOPASSWD: ALL" >> /etc/sudoers
+sed -i "s/^.*requiretty/#Defaults requiretty/" /etc/sudoers
+
+# Disable daily apt unattended updates.
+#echo 'APT::Periodic::Enable "0";' >> /etc/apt/apt.conf.d/10periodic
+
+# generating password configuration on ansible server to later access remote servers
+echo vagrant | sudo -S su - vagrant -c "ssh-keygen -t rsa -f /home/vagrant/.ssh/id_rsa -q -P ''"
+# Add vagrant user to sudoers.
 USER=vagrant
 PASSWORD=vagrant
 

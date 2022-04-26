@@ -74,13 +74,7 @@
       
     - name: enable  ufw
       command: ufw enable
-
-    - name: GitLab Restart with restart
-      command: gitlab-ctl restart
-
-    - name: GitLab gitlab-runsvdir status
-      command: service gitlab-runsvdir status 
-      
+    
     - name: restart nfs server
       service: name=nfs-kernel-server state=restarted
       tags: nfs_server

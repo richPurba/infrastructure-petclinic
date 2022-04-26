@@ -11,6 +11,7 @@ PASSWORD=vagrant
 
 # add addresses to /etc/hosts 
 echo "192.168.99.155 ansible.sample.com" | sudo tee -a /etc/hosts 
+echo "192.168.99.156 other.sample.com" | sudo tee -a /etc/hosts 
 echo "192.168.99.154 gitlab.sample.com" | sudo tee -a /etc/hosts 
 echo "192.168.99.153 jenkins.sample.com" | sudo tee -a /etc/hosts 
 echo "192.168.99.152 docker.sample.com" | sudo tee -a /etc/hosts 
@@ -24,11 +25,13 @@ echo "jenkins.sample.com" | sudo tee -a /etc/ansible/hosts
 echo "docker.sample.com" | sudo tee -a /etc/ansible/hosts 
 echo "nfsclient.sample.com" | sudo tee -a /etc/ansible/hosts
 echo "nfsserver.sample.com" | sudo tee -a /etc/ansible/hosts  
+echo "other.sample.com" | sudo tee -a /etc/ansible/hosts  
 
 echo " " | sudo tee -a /etc/ansible/hosts
 echo "[test]" | sudo tee -a /etc/ansible/hosts
 echo "nfsserver.sample.com" | sudo tee -a /etc/ansible/hosts
 echo "nfsclient.sample.com" | sudo tee -a /etc/ansible/hosts
+echo "other.sample.com" | sudo tee -a /etc/ansible/hosts
 
 echo " " | sudo tee -a /etc/ansible/hosts
 echo "[nfs-server]" | sudo tee -a /etc/ansible/hosts
@@ -37,6 +40,10 @@ echo "nfsserver.sample.com" | sudo tee -a /etc/ansible/hosts
 echo " " | sudo tee -a /etc/ansible/hosts
 echo "[nfs-clients]" | sudo tee -a /etc/ansible/hosts
 echo "nfsclient.sample.com" | sudo tee -a /etc/ansible/hosts
+
+echo " " | sudo tee -a /etc/ansible/hosts
+echo "[other]" | sudo tee -a /etc/ansible/hosts
+echo "other.sample.com" | sudo tee -a /etc/ansible/hosts
 
 echo " " | sudo tee -a /etc/ansible/hosts
 echo "[jenkins]" | sudo tee -a /etc/ansible/hosts
@@ -62,6 +69,7 @@ chmod +x ~/artefacts/scripts/ssh_pass.sh
 ~/artefacts/scripts/ssh_pass.sh $USER $PASSWORD "docker.sample.com" 
 ~/artefacts/scripts/ssh_pass.sh $USER $PASSWORD "jenkins.sample.com"
 ~/artefacts/scripts/ssh_pass.sh $USER $PASSWORD "gitlab.sample.com"
+~/artefacts/scripts/ssh_pass.sh $USER $PASSWORD "other.sample.com"
 
 
 

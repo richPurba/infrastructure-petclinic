@@ -49,6 +49,11 @@ servers=[
 	:config_ansible => "./artefacts/scripts/config_ansible.sh",
 	:source =>  "./artefacts/.",
 	:destination => "/home/vagrant/artefacts"
+  },
+  {
+    :hostname => "other." + "#{DOMAIN}",
+    :ip => "#{BRIDGE_NET}" + "156",
+    :ram => 1024
   }
 ]
  

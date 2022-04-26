@@ -1,0 +1,82 @@
+---
+- name: Installing NFS Server 
+  hosts: other
+  become: true
+  
+  vars:
+    mountable_share_drive: '/dev/sda1'   
+    nfsexport: /share
+    src_exports: ~/artefacts/templates/exports.j2
+    #nfsserver: hostvars[inventory_hostname]['facter_ipaddress_eth1'] #192.168.99.150
+   
+  tasks:
+    - name: Create mountable dir
+      file: path={{ nfsexport }} state=directory mode=777 owner=root group=root
+      tags: nfs_server
+        
+    - name: make sure the mount drive has a filesystem
+      filesystem: fstype=ext4 dev={{ mountable_share_drive | default('/dev/sda1') }}
+      tags: nfs_server
+      
+    - name: set mountpoints
+      mount: name={{ nfsexport }} src={{ mountable_share_drive | default('/dev/sda1') }} fstype=auto opts=defaults,nobootwait dump=0 passno=2 state=mounted
+      tags: nfs_server
+      
+    - name: Ensure NFS utilities are installed.
+      apt: 
+        name: ['nfs-common','nfs-kernel-server']  
+        state: present 
+        update_cache: yes
+      tags: nfs_server
+      
+    - name: copy /etc/exports
+      template: src={{ src_exports }} dest=/etc/exports owner=root group=root
+      tags: nfs_server
+         
+    - name: Run ufw allow http script 
+      command: ufw allow http
+
+    - name: Run ufw allow https script 
+      command: ufw allow https
+
+    - name: Run ufw allow to open port
+      command: ufw allow 8888
+
+    - name: Run ufw allow to open port
+      command: ufw allow 8761
+
+    - name: Run ufw allow to open port
+      command: ufw allow 8081
+
+    - name: Run ufw allow to open port
+      command: ufw allow 8888
+
+    - name: Run ufw allow to open port
+      command: ufw allow 8082
+
+    - name: Run ufw allow to open port
+      command: ufw allow 8083
+
+    - name: Run ufw allow to open port
+      command: ufw allow 9411
+
+    - name: Run ufw allow to open port
+      command: ufw allow 9090
+
+    - name: Run ufw allow to open port
+      command: ufw allow 3000
+
+    - name: Run ufw allow to open port
+      command: ufw allow 9091
+
+    - name: Run ufw allow OpenSSH script 
+      command: ufw allow OpenSSH
+      
+    - name: enable  ufw
+      command: ufw enable
+    
+    - name: restart nfs server
+      service: name=nfs-kernel-server state=restarted
+      tags: nfs_server
+
+   

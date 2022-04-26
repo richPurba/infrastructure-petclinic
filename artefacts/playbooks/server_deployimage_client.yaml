@@ -6,5 +6,5 @@
   tasks:
     - name: restart cotainers
       command: >
-        sh -c 'cd /home/vagrant/artefacts/scripts/docker/; docker-compose up -d'
+        sh -c 'cd /home/vagrant/; docker-compose up -d'
         
